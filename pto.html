@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute photos with my lovieee</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #fcefee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Floating Hearts */
+  .heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-20vh) scale(1.3); opacity: 0; }
+  }
+
+  /* Sparkles */
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #fff;
+    animation: twinkle 2s infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.3; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Stars */
+  .star {
+    position: absolute;
+    font-size: 16px;
+    color: #ffd700;
+    animation: shine 3s infinite alternate;
+  }
+  @keyframes shine {
+    from { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+    to { opacity: 1; transform: scale(1.3) rotate(20deg); }
+  }
+
+  /* Cover Page */
+  .cover {
+    width: 350px;
+    height: 500px;
+    background: linear-gradient(135deg, #ffb6c1, #ffdde1);
+    border: 5px solid #ff6b81;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    z-index: 10;
+  }
+  .cover:hover { transform: scale(1.05); }
+  .cover h1 { color: #fff; font-size: 28px; margin: 10px 0; }
+  .cover p { color: #fff8f0; font-size: 18px; }
+
+  /* Book */
+  .book {
+    display: none;
+    width: 95%;
+    max-width: 1000px;
+    height: 650px;
+    background: #fff8f0;
+    border: 5px solid #ffb6c1;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Spread (pair of left+right pages) */
+  .spread {
+    display: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .page {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 2px dashed #ffb6c1;
+  }
+  .page:last-child { border-right: none; }
+
+  h1 { text-align: center; color: #ff6b81; margin-bottom: 15px; }
+
+  .dates {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-items: center;
+  }
+
+  .date-button {
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #ff6b81;
+    border-radius: 10px;
+    background: #fff0f5;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    text-align: center;
+  }
+  .date-button:hover { background: #ff6b81; color: white; }
+
+  /* Popup */
+  .popup {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 2px solid #ff6b81;
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+  }
+  .popup img {
+    max-width: 250px;
+    max-height: 200px;
+    border-radius: 8px;
+  }
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ff6b81;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+
+  /* Navigation Buttons */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff6b81;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  #prev { left: 10px; }
+  #next { right: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Floating Hearts -->
+<div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+<div class="heart" style="left:30%; animation-delay:1s;">💕</div>
+<div class="heart" style="left:50%; animation-delay:2s;">💖</div>
+<div class="heart" style="left:70%; animation-delay:3s;">💗</div>
+<div class="heart" style="left:90%; animation-delay:4s;">💞</div>
+
+<!-- Sparkles -->
+<div class="sparkle" style="top:15%; left:20%; animation-delay:0s;"></div>
+<div class="sparkle" style="top:40%; left:60%; animation-delay:1s;"></div>
+<div class="sparkle" style="top:70%; left:30%; animation-delay:2s;"></div>
+<div class="sparkle" style="top:80%; left:80%; animation-delay:3s;"></div>
+
+<!-- Stars -->
+<div class="star" style="top:25%; left:15%;">✨</div>
+<div class="star" style="top:55%; left:75%;">🌟</div>
+<div class="star" style="top:65%; left:45%;">✨</div>
+
+<!-- Cover Page -->
+<div class="cover" id="cover">
+  <h1>📖 Our Little Memories</h1>
+  <p>Click to open</p>
+</div>
+
+<!-- Book -->
+<div class="book" id="book">
+
+  <!-- Spread 1 -->
+  <div class="spread">
+    <div class="page">
+      <h1>Our Album</h1>
+      <div class="dates">
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\89a66ffb-5be4-47be-b832-680ca102a2f8.jfif">05-15-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\488fbb47-85c1-4520-93d2-ae95ca531873.jfif">08-08-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\d1cf6976-cb69-4d79-828b-7884c2181b30.jfif">07-12-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\73d15702-d1e1-4c1f-9b6d-801cbc52da80.jfif">07-20-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\d366ad43-c559-4d7a-b09b-36508bb43562.jfif">08-01-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\3ee47900-f367-424a-90ef-d5f99857d181.jfif">08-10-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\e61616b7-09e0-4ec4-909b-ef65755b131a.jfif">08-15-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\00b92865-e402-4ea8-8b41-b7f2864b3805.jfif">08-20-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\64494bee-f440-4d87-97c8-de1bfa2e09ba.jfif">08-22-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\070ac6cd-a1ee-4db6-9c70-2aa58a2efb8d.jfif">08-25-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\8f31e224-2aec-4bdc-80ce-ebe75afa0abf.jfif">05-15-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\80e05409-19f5-4642-8fc8-65bc04a7e833.jfif">08-08-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\eae4c0cf-77b1-4eb5-a996-a7529b4fc33b.jfif">07-12-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\8925d837-4555-4dbb-9bba-e4a40371d2aa.jfif">07-20-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\3ee47900-f367-424a-90ef-d5f99857d181.jfif">08-01-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\6b3cb5ba-2288-4569-ba91-1a5b227644c7.jfif">08-10-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\e2d724e4-1402-48b2-aee2-0a1821bc782f.jfif">08-15-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\1b395c83-9ba1-4939-811f-809494aba3e6.jfif">08-20-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\056866be-a38e-4fc8-af2e-34fdc5f579ef.jfif">08-22-2025</div>
+      <div class="date-button" data-photo="c:\Users\Ryan\Downloads\4fd30df1-ed4a-41bf-8deb-4214fb714dce.jfif">08-25-2025</div>
+      </div>
+      </div>
+    <div class="page">
+      <h1>Our Album</h1>
+      <div class="dates">
+      <div class="date-button" data-photo="photos/11.jpg">08-26-2025</div>
+      <div class="date-button" data-photo="photos/12.jpg">08-27-2025</div>
+      <div class="date-button" data-photo="photos/13.jpg">08-28-2025</div>
+      <div class="date-button" data-photo="photos/14.jpg">08-29-2025</div>
+      <div class="date-button" data-photo="photos/15.jpg">08-30-2025</div>
+      <div class="date-button" data-photo="photos/16.jpg">09-01-2025</div>
+      <div class="date-button" data-photo="photos/17.jpg">09-02-2025</div>
+      <div class="date-button" data-photo="photos/18.jpg">09-03-2025</div>
+      <div class="date-button" data-photo="photos/19.jpg">09-04-2025</div>
+      <div class="date-button" data-photo="photos/20.jpg">09-05-2025</div>
+      <div class="date-button" data-photo="photos/11.jpg">08-26-2025</div>
+      <div class="date-button" data-photo="photos/12.jpg">08-27-2025</div>
+      <div class="date-button" data-photo="photos/13.jpg">08-28-2025</div>
+      <div class="date-button" data-photo="photos/14.jpg">08-29-2025</div>
+      <div class="date-button" data-photo="photos/15.jpg">08-30-2025</div>
+      <div class="date-button" data-photo="photos/16.jpg">09-01-2025</div>
+      <div class="date-button" data-photo="photos/17.jpg">09-02-2025</div>
+      <div class="date-button" data-photo="photos/18.jpg">09-03-2025</div>
+      <div class="date-button" data-photo="photos/19.jpg">09-04-2025</div>
+      <div class="date-button" data-photo="photos/20.jpg">09-05-2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spread 2 -->
+  <div class="spread">
+    <div class="page">
+      <h1>Our Album</h1>
+      <div class="dates">
+        <div class="date-button" data-photo="photos/9.jpg">08-22-2025</div>
+        <div class="date-button" data-photo="photos/10.jpg">08-25-2025</div>
+        <div class="date-button" data-photo="photos/11.jpg">08-26-2025</div>
+        <div class="date-button" data-photo="photos/12.jpg">08-27-2025</div>
+      </div>
+    </div>
+    <div class="page">
+      <h1>Our Album</h1>
+      <div class="dates">
+        <div class="date-button" data-photo="photos/13.jpg">08-28-2025</div>
+        <div class="date-button" data-photo="photos/14.jpg">08-29-2025</div>
+        <div class="date-button" data-photo="photos/15.jpg">08-30-2025</div>
+        <div class="date-button" data-photo="photos/16.jpg">09-01-2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <button class="nav-btn" id="prev">⟨</button>
+  <button class="nav-btn" id="next">⟩</button>
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <span class="close" id="close">&times;</span>
+  <img id="popup-img" src="" alt="Photo">
+</div>
+
+<script>
+  const cover = document.getElementById('cover');
+  const book = document.getElementById('book');
+  const spreads = document.querySelectorAll('.spread');
+  const buttons = document.querySelectorAll('.date-button');
+  const popup = document.getElementById('popup');
+  const popupImg = document.getElementById('popup-img');
+  const close = document.getElementById('close');
+  const next = document.getElementById('next');
+  const prev = document.getElementById('prev');
+
+  let currentSpread = 0;
+
+  // Open book
+  cover.addEventListener('click', () => {
+    cover.style.display = 'none';
+    book.style.display = 'block';
+    spreads[currentSpread].style.display = 'flex';
+  });
+
+  // Flip pages
+  next.addEventListener('click', () => {
+    if (currentSpread < spreads.length - 1) {
+      spreads[currentSpread].style.display = 'none';
+      currentSpread++;
+      spreads[currentSpread].style.display = 'flex';
+    }
+  });
+
+  prev.addEventListener('click', () => {
+    if (currentSpread > 0) {
+      spreads[currentSpread].style.display = 'none';
+      currentSpread--;
+      spreads[currentSpread].style.display = 'flex';
+    }
+  });
+
+  // Show popup
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const rect = btn.getBoundingClientRect();
+      popup.style.display = 'block';
+      popup.style.top = rect.top + window.scrollY + 40 + 'px';
+      popup.style.left = rect.left + window.scrollX + 'px';
+      popupImg.src = btn.getAttribute('data-photo');
+    });
+  });
+
+  // Close popup
+  close.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+</script>
+</body>
+</html>
